@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo de Média</title>
+</head>
+<body>
+    <a href="indexv2.html">atividade1b</a>
+    <a href="index2.html">atividade 2</a>
+    <a href="index3.html">atividade 3</a>
+
+    <h1>Calculadora de Média</h1>
+    <p>Média: <span id="media"></span></p>
+    <p>Situação: <span id="situacao"></span></p>
+
+    <script>
+        // Solicitar as notas
+        const nota1 = parseFloat(prompt("Digite a primeira nota:"));
+        const nota2 = parseFloat(prompt("Digite a segunda nota:"));
+
+        if (isNaN(nota1) || isNaN(nota2)) {
+            alert("Por favor, insira números válidos.");
+        } else {
+            // Calcular a média
+            const media = (nota1 + nota2) / 2;
+
+            // Determinar situação e cor
+            let situacao = "";
+            let cor = "";
+
+            if (media >= 6) {
+                situacao = "Aprovado";
+                cor = "blue";
+            } else {
+                situacao = "Reprovado";
+                cor = "red";
+            }
+
+            // Exibir resultado
+            const mediaElement = document.getElementById("media");
+            const situacaoElement = document.getElementById("situacao");
+
+            mediaElement.innerHTML = media.toFixed(2);
+            situacaoElement.innerHTML = situacao;
+            situacaoElement.style.color = cor;
+        }
+    </script>
+</body>
+</html>
+
+

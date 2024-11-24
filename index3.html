@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Itens à Lista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .colors {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .colors label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">atividade1b</a>
+    <a href="indexv2.html">atividade 2</a>
+    <a href="index2.html">atividade 3</a>
+
+    <div class="container">
+        <h1>Adicionar Itens à Lista</h1>
+        <input type="text" id="texto" placeholder="Digite o texto do item">
+        <div class="colors">
+            <label>
+                <input type="radio" name="cores" value="red" checked> Vermelho
+            </label>
+            <label>
+                <input type="radio" name="cores" value="green"> Verde
+            </label>
+            <label>
+                <input type="radio" name="cores" value="blue"> Azul
+            </label>
+        </div>
+        <button id="adicionar">Adicionar Item</button>
+    </div>
+    <ul id="lista">
+    </ul>
+
+    <script>
+        // Função para adicionar item à lista
+        function adicionarItem() {
+            // Recuperar o texto do item
+            const texto = document.getElementById("texto").value;
+
+            // Recuperar a cor selecionada
+            const cor = document.querySelector('input[name="cores"]:checked').value;
+
+            // Verificar se o texto não está vazio
+            if (texto.trim() === "") {
+                alert("Por favor, insira o texto do item.");
+                return;
+            }
+
+            // Criar novo item da lista
+            const novoItem = document.createElement("li");
+            novoItem.textContent = texto;
+            novoItem.style.backgroundColor = cor;
+
+            // Adicionar o item à lista
+            const lista = document.getElementById("lista");
+            lista.appendChild(novoItem);
+
+            // Limpar o campo de texto
+            document.getElementById("texto").value = "";
+        }
+
+        // Adicionar o evento ao botão
+        const botao = document.getElementById("adicionar");
+        botao.addEventListener("click", adicionarItem);
+    </script>
+</body>
+</html>
